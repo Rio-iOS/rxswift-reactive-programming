@@ -179,7 +179,7 @@ final class Chapter02ViewController: UIViewController {
             }
         }
         
-        example(of: "Single") {
+        example(of: "⭐️ Single") {
             let disposeBag = DisposeBag()
             
             enum FileReadError: Error {

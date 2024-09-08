@@ -23,6 +23,7 @@
 		34735F822C83789D00C52378 /* Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34735F812C83789D00C52378 /* Factories.swift */; };
 		34735F842C837ACA00C52378 /* Chapter02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34735F832C837ACA00C52378 /* Chapter02ViewController.swift */; };
 		34735F862C873EC600C52378 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34735F852C873EC600C52378 /* Utils.swift */; };
+		347C69172C89E32500478D06 /* Chapter03ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69162C89E32500478D06 /* Chapter03ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		34735F812C83789D00C52378 /* Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factories.swift; sourceTree = "<group>"; };
 		34735F832C837ACA00C52378 /* Chapter02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter02ViewController.swift; sourceTree = "<group>"; };
 		34735F852C873EC600C52378 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		347C69162C89E32500478D06 /* Chapter03ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter03ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				34735F472C8376CB00C52378 /* SceneDelegate.swift */,
 				34735F492C8376CB00C52378 /* TopViewController.swift */,
 				34735F832C837ACA00C52378 /* Chapter02ViewController.swift */,
+				347C69162C89E32500478D06 /* Chapter03ViewController.swift */,
 				34735F4E2C8376CD00C52378 /* Assets.xcassets */,
 				34735F502C8376CD00C52378 /* LaunchScreen.storyboard */,
 				34735F532C8376CD00C52378 /* Info.plist */,
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347C69172C89E32500478D06 /* Chapter03ViewController.swift in Sources */,
 				34735F4A2C8376CB00C52378 /* TopViewController.swift in Sources */,
 				34735F842C837ACA00C52378 /* Chapter02ViewController.swift in Sources */,
 				34735F462C8376CB00C52378 /* AppDelegate.swift in Sources */,
