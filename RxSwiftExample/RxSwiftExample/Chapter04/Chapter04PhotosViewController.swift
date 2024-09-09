@@ -6,10 +6,18 @@
 //
 
 import UIKit
+import Photos
+import RxSwift
 
 final class Chapter04PhotosViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var dataSource: Chapter04CollectionViewDataSource!
+    private var photoRepository: Chapter04PhotoRepository!
+    private let selectedImagesSubject = PublishSubject<UIImage>()
+    
+    var selectedImages: Observable<UIImage> {
+        selectedImagesSubject.asObserver()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +40,10 @@ final class Chapter04PhotosViewController: UIViewController {
             )
         }()
         
+        photoRepository = Chapter04PhotoRepository(thumnailSize: thumnailSize)
         // Chapter04CollectionViewDataSourceを生成
         dataSource = Chapter04CollectionViewDataSource(
-            photoManager: Chapter04PhotoRepository(thumnailSize: thumnailSize)
+            photoManager: photoRepository
         )
        
         // UICollectionViewのDataSourceを設定
@@ -57,6 +66,20 @@ extension Chapter04PhotosViewController: UICollectionViewDelegate {
         if let cell = collectionView.cellForItem(at: indexPath) as? Chapter04PhotoCell {
             cell.flash()
         }
+        
+        let asset = photoRepository.photos.object(at: indexPath.item)
+        photoRepository.imageManager.requestImage(
+            for: asset,
+            targetSize: view.frame.size,
+            contentMode: .aspectFill,
+            options: nil) { [weak self] image, info in
+                guard let image, let info else {
+                    return
+                }
+                if let isThumnail = info[PHImageResultIsDegradedKey as NSString] as? Bool, !isThumnail {
+                    self?.selectedImagesSubject.onNext(image)
+                }
+            }
     }
 }
 

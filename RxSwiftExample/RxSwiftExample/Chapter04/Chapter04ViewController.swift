@@ -32,8 +32,26 @@ final class Chapter04ViewController: UIViewController {
     }
     
     @IBAction func actionAdd(_ sender: Any) {
-        let newImages = images.value + [UIImage(named: "IMG_1907.jpg")!]
-        images.accept(newImages)
+//        let newImages = images.value + [UIImage(named: "IMG_1907.jpg")!]
+//        images.accept(newImages)
+        
+        let photosViewController = Chapter04PhotosViewController()
+        
+        photosViewController
+            .selectedImages
+            .subscribe(
+                with: self,
+                onNext: { owner, image in
+                    owner.images.accept(owner.images.value + [image])
+                },
+                onDisposed: { _ in
+                    print("Cmpleted photo selection")
+                }
+            )
+            .disposed(by: disposeBag)
+
+        
+        navigationController?.pushViewController(photosViewController, animated: true)
     }
 }
 
