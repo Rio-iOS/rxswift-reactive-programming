@@ -58,6 +58,7 @@ final class Chapter04PhotosViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        selectedImagesSubject.onCompleted()
     }
 }
 
