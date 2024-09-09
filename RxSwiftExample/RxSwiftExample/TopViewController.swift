@@ -31,8 +31,12 @@ private extension TopViewController {
         let button2 = makeButton(title: "Chapter03")
         button2.addTarget(self, action: #selector(showChapter03), for: .primaryActionTriggered)
         
+        let button3 = makeButton(title: "Chapter04")
+        button3.addTarget(self, action: #selector(showChapter04), for: .primaryActionTriggered)
+        
         stackView.addArrangedSubview(button1)
         stackView.addArrangedSubview(button2)
+        stackView.addArrangedSubview(button3)
 
         scrollView.addSubview(stackView)
         
@@ -61,6 +65,16 @@ private extension TopViewController {
     
     @objc func showChapter03() {
         let viewController = Chapter03ViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc func showChapter04() {
+        guard let viewController = UIStoryboard(name: "Chapter04", bundle: nil).instantiateInitialViewController() as? Chapter04ViewController else {
+            return
+        }
+        
+        // let viewController = Chapter04PhotosViewController()
+        
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

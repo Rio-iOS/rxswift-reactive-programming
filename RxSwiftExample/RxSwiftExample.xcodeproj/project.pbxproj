@@ -24,6 +24,12 @@
 		34735F842C837ACA00C52378 /* Chapter02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34735F832C837ACA00C52378 /* Chapter02ViewController.swift */; };
 		34735F862C873EC600C52378 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34735F852C873EC600C52378 /* Utils.swift */; };
 		347C69172C89E32500478D06 /* Chapter03ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69162C89E32500478D06 /* Chapter03ViewController.swift */; };
+		347C69192C8D707300478D06 /* Chapter04.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347C69182C8D707300478D06 /* Chapter04.storyboard */; };
+		347C691B2C8D755900478D06 /* Chapter04ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C691A2C8D755900478D06 /* Chapter04ViewController.swift */; };
+		347C691D2C8D79B300478D06 /* Chapter04PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C691C2C8D79B300478D06 /* Chapter04PhotosViewController.swift */; };
+		347C691F2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C691E2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift */; };
+		347C69212C8DD4AF00478D06 /* Chapter04PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69202C8DD4AF00478D06 /* Chapter04PhotoCell.swift */; };
+		347C69232C8DD9F000478D06 /* Chapter04PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69222C8DD9F000478D06 /* Chapter04PhotoRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +66,12 @@
 		34735F832C837ACA00C52378 /* Chapter02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter02ViewController.swift; sourceTree = "<group>"; };
 		34735F852C873EC600C52378 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		347C69162C89E32500478D06 /* Chapter03ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter03ViewController.swift; sourceTree = "<group>"; };
+		347C69182C8D707300478D06 /* Chapter04.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter04.storyboard; sourceTree = "<group>"; };
+		347C691A2C8D755900478D06 /* Chapter04ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04ViewController.swift; sourceTree = "<group>"; };
+		347C691C2C8D79B300478D06 /* Chapter04PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04PhotosViewController.swift; sourceTree = "<group>"; };
+		347C691E2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		347C69202C8DD4AF00478D06 /* Chapter04PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04PhotoCell.swift; sourceTree = "<group>"; };
+		347C69222C8DD9F000478D06 /* Chapter04PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04PhotoRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,15 +127,16 @@
 		34735F442C8376CB00C52378 /* RxSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				347C69242C8DEF3800478D06 /* Chapter04 */,
 				34735F802C83789000C52378 /* Utils */,
 				34735F452C8376CB00C52378 /* AppDelegate.swift */,
 				34735F472C8376CB00C52378 /* SceneDelegate.swift */,
 				34735F492C8376CB00C52378 /* TopViewController.swift */,
 				34735F832C837ACA00C52378 /* Chapter02ViewController.swift */,
 				347C69162C89E32500478D06 /* Chapter03ViewController.swift */,
-				34735F4E2C8376CD00C52378 /* Assets.xcassets */,
 				34735F502C8376CD00C52378 /* LaunchScreen.storyboard */,
 				34735F532C8376CD00C52378 /* Info.plist */,
+				34735F4E2C8376CD00C52378 /* Assets.xcassets */,
 			);
 			path = RxSwiftExample;
 			sourceTree = "<group>";
@@ -152,6 +165,19 @@
 				34735F852C873EC600C52378 /* Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		347C69242C8DEF3800478D06 /* Chapter04 */ = {
+			isa = PBXGroup;
+			children = (
+				347C69182C8D707300478D06 /* Chapter04.storyboard */,
+				347C691A2C8D755900478D06 /* Chapter04ViewController.swift */,
+				347C691C2C8D79B300478D06 /* Chapter04PhotosViewController.swift */,
+				347C691E2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift */,
+				347C69202C8DD4AF00478D06 /* Chapter04PhotoCell.swift */,
+				347C69222C8DD9F000478D06 /* Chapter04PhotoRepository.swift */,
+			);
+			path = Chapter04;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +298,7 @@
 			files = (
 				34735F4F2C8376CD00C52378 /* Assets.xcassets in Resources */,
 				34735F522C8376CD00C52378 /* Base in Resources */,
+				347C69192C8D707300478D06 /* Chapter04.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,11 +325,16 @@
 			files = (
 				347C69172C89E32500478D06 /* Chapter03ViewController.swift in Sources */,
 				34735F4A2C8376CB00C52378 /* TopViewController.swift in Sources */,
+				347C691B2C8D755900478D06 /* Chapter04ViewController.swift in Sources */,
+				347C69212C8DD4AF00478D06 /* Chapter04PhotoCell.swift in Sources */,
 				34735F842C837ACA00C52378 /* Chapter02ViewController.swift in Sources */,
 				34735F462C8376CB00C52378 /* AppDelegate.swift in Sources */,
+				347C69232C8DD9F000478D06 /* Chapter04PhotoRepository.swift in Sources */,
 				34735F822C83789D00C52378 /* Factories.swift in Sources */,
+				347C691F2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift in Sources */,
 				34735F482C8376CB00C52378 /* SceneDelegate.swift in Sources */,
 				34735F862C873EC600C52378 /* Utils.swift in Sources */,
+				347C691D2C8D79B300478D06 /* Chapter04PhotosViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
