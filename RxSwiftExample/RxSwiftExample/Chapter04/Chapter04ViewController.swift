@@ -15,6 +15,9 @@ final class Chapter04ViewController: UIViewController {
     private let images = BehaviorRelay<[UIImage]>(value: [])
     
     @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet private weak var clearButton: UIButton!
+    @IBOutlet private weak var itemAddButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +64,15 @@ private extension Chapter04ViewController {
         images
             .subscribe(with: self, onNext: { owner, images in
                 owner.imageView.image = images.collage(size: owner.imageView.frame.size)
+                owner.updateUI(images: images)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func updateUI(images: [UIImage]) {
+        saveButton.isEnabled = (images.count > 0) && (images.count % 2 == 0)
+        clearButton.isEnabled = images.count > 0
+        itemAddButton.isEnabled = images.count < 6
+        title = images.count > 0 ? "\(images.count) photos" : "Collage"
     }
 }
