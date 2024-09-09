@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hTh-8A-xbR">
-                                <rect key="frame" x="0.0" y="214.66666666666663" width="393" height="210"/>
+                                <rect key="frame" x="16" y="214.66666666666663" width="369" height="210"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="210" id="cRY-C0-eMc"/>
                                 </constraints>
@@ -54,10 +54,10 @@
                         <constraints>
                             <constraint firstItem="9Gb-bQ-K9u" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="1.5" id="CAQ-st-PxG"/>
                             <constraint firstItem="mCF-qu-pY7" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="1.5" id="Fa2-mD-dkw"/>
-                            <constraint firstItem="hTh-8A-xbR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="L6Q-LU-N0n"/>
+                            <constraint firstItem="hTh-8A-xbR" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="L6Q-LU-N0n"/>
                             <constraint firstItem="9Gb-bQ-K9u" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="1.5" id="LT2-zY-o7B"/>
                             <constraint firstItem="mCF-qu-pY7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" multiplier="0.5" id="UbO-5D-QSW"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hTh-8A-xbR" secondAttribute="trailing" id="VWy-H6-6sT"/>
+                            <constraint firstItem="hTh-8A-xbR" firstAttribute="trailingMargin" secondItem="5EZ-qb-Rvc" secondAttribute="trailingMargin" id="VWy-H6-6sT"/>
                             <constraint firstItem="hTh-8A-xbR" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" multiplier="0.75" id="cEa-mY-Bo0"/>
                         </constraints>
                     </view>
@@ -68,6 +68,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="hTh-8A-xbR" id="LhI-PA-fAr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

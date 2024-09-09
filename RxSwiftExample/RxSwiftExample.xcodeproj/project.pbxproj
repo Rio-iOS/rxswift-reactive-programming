@@ -30,6 +30,7 @@
 		347C691F2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C691E2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift */; };
 		347C69212C8DD4AF00478D06 /* Chapter04PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69202C8DD4AF00478D06 /* Chapter04PhotoCell.swift */; };
 		347C69232C8DD9F000478D06 /* Chapter04PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69222C8DD9F000478D06 /* Chapter04PhotoRepository.swift */; };
+		347C69262C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69252C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		347C691E2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		347C69202C8DD4AF00478D06 /* Chapter04PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04PhotoCell.swift; sourceTree = "<group>"; };
 		347C69222C8DD9F000478D06 /* Chapter04PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04PhotoRepository.swift; sourceTree = "<group>"; };
+		347C69252C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter04UIImage+Collage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				347C691E2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift */,
 				347C69202C8DD4AF00478D06 /* Chapter04PhotoCell.swift */,
 				347C69222C8DD9F000478D06 /* Chapter04PhotoRepository.swift */,
+				347C69252C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift */,
 			);
 			path = Chapter04;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				34735F482C8376CB00C52378 /* SceneDelegate.swift in Sources */,
 				34735F862C873EC600C52378 /* Utils.swift in Sources */,
 				347C691D2C8D79B300478D06 /* Chapter04PhotosViewController.swift in Sources */,
+				347C69262C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
