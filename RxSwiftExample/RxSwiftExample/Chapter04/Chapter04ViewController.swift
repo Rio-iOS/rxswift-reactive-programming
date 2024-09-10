@@ -29,6 +29,39 @@ final class Chapter04ViewController: UIViewController {
     }
     
     @IBAction func actionSave(_ sender: Any) {
+        guard let image = imageView.image else {
+            return
+        }
+        
+//        Chapter04PhotoWriter
+//            .save(image)
+//            .asSingle()
+//            .subscribe(
+//                with: self,
+//                onSuccess: { owner, id in
+//                    owner.showMessage("Saved with id: \(id)")
+//                    owner.actionClear()
+//                },
+//                onFailure: { owner, error in
+//                    owner.showMessage("Error", description: error.localizedDescription)
+//                }
+//            )
+//            .disposed(by: disposeBag)
+        
+        Chapter04PhotoWriter
+            .save(image)
+            .subscribe(
+                with: self,
+                onSuccess: { owner, id in
+                    owner.showMessage("Saved with id: \(id)")
+                    owner.actionClear()
+                },
+                onFailure: { owner, error in
+                    owner.showMessage("Error", description: error.localizedDescription)
+                }
+            )
+            .disposed(by: disposeBag)
+        
     }
     
     @IBAction func actionAdd(_ sender: Any) {
@@ -49,7 +82,6 @@ final class Chapter04ViewController: UIViewController {
                 }
             )
             .disposed(by: disposeBag)
-
         
         navigationController?.pushViewController(photosViewController, animated: true)
     }
@@ -57,27 +89,58 @@ final class Chapter04ViewController: UIViewController {
 
 private extension Chapter04ViewController {
     func showMessage(_ title: String, description: String? = nil) {
-        let alert = UIAlertController(
-            title: title,
-            message: description,
-            preferredStyle: .alert
-        )
+//        let alert = UIAlertController(
+//            title: title,
+//            message: description,
+//            preferredStyle: .alert
+//        )
+//        
+//        alert.addAction(
+//            .init(
+//                title: "Close",
+//                style: .default,
+//                handler: { [weak self] _ in
+//                    self?.dismiss(animated: true, completion: nil)
+//                }
+//            )
+//        )
+//        
+//        present(alert, animated: true)
         
-        alert.addAction(
-            .init(
-                title: "Close",
-                style: .default,
-                handler: { [weak self] _ in
-                    self?.dismiss(animated: true, completion: nil)
-                }
-            )
-        )
-        
-        present(alert, animated: true)
+        // challenge2
+        alert(title, description: description)
+            .subscribe()
+            .disposed(by: disposeBag)
     }
-}
+   
+    // challenge2
+    func alert(_ title: String, description: String? = nil) -> Completable {
+        return Completable.create { observer in
+            let alert = UIAlertController(
+                title: title,
+                message: description,
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(
+                .init(
+                    title: "Close",
+                    style: .default,
+                    handler: { _ in
+                        observer(.completed)
+                    }
+                )
+            )
+            
+            self.present(alert, animated: true)
+           
+            // disposeされた際にアラートが閉じることが保障される
+            return Disposables.create {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
 
-private extension Chapter04ViewController {
     func bind() {
         images
             .subscribe(with: self, onNext: { owner, images in
@@ -92,5 +155,9 @@ private extension Chapter04ViewController {
         clearButton.isEnabled = images.count > 0
         itemAddButton.isEnabled = images.count < 6
         title = images.count > 0 ? "\(images.count) photos" : "Collage"
+    }
+    
+    func actionClear() {
+        images.accept([])
     }
 }
