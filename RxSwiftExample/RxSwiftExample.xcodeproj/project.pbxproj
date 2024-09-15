@@ -32,6 +32,7 @@
 		347C69232C8DD9F000478D06 /* Chapter04PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69222C8DD9F000478D06 /* Chapter04PhotoRepository.swift */; };
 		347C69262C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69252C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift */; };
 		347C69282C9079E300478D06 /* Chapter04PhotoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69272C9079E300478D06 /* Chapter04PhotoWriter.swift */; };
+		347C692A2C96E7AA00478D06 /* Chapter05ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69292C96E7AA00478D06 /* Chapter05ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		347C69222C8DD9F000478D06 /* Chapter04PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04PhotoRepository.swift; sourceTree = "<group>"; };
 		347C69252C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter04UIImage+Collage.swift"; sourceTree = "<group>"; };
 		347C69272C9079E300478D06 /* Chapter04PhotoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04PhotoWriter.swift; sourceTree = "<group>"; };
+		347C69292C96E7AA00478D06 /* Chapter05ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter05ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				34735F442C8376CB00C52378 /* RxSwiftExample */,
-				34735F5B2C8376CD00C52378 /* RxSwiftExampleTests */,
 				34735F652C8376CD00C52378 /* RxSwiftExampleUITests */,
 				34735F432C8376CB00C52378 /* Products */,
 			);
@@ -138,6 +139,8 @@
 				34735F492C8376CB00C52378 /* TopViewController.swift */,
 				34735F832C837ACA00C52378 /* Chapter02ViewController.swift */,
 				347C69162C89E32500478D06 /* Chapter03ViewController.swift */,
+				347C69292C96E7AA00478D06 /* Chapter05ViewController.swift */,
+				34735F5B2C8376CD00C52378 /* RxSwiftExampleTests */,
 				34735F502C8376CD00C52378 /* LaunchScreen.storyboard */,
 				34735F532C8376CD00C52378 /* Info.plist */,
 				34735F4E2C8376CD00C52378 /* Assets.xcassets */,
@@ -337,6 +340,7 @@
 				34735F462C8376CB00C52378 /* AppDelegate.swift in Sources */,
 				347C69232C8DD9F000478D06 /* Chapter04PhotoRepository.swift in Sources */,
 				34735F822C83789D00C52378 /* Factories.swift in Sources */,
+				347C692A2C96E7AA00478D06 /* Chapter05ViewController.swift in Sources */,
 				347C691F2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift in Sources */,
 				34735F482C8376CB00C52378 /* SceneDelegate.swift in Sources */,
 				34735F862C873EC600C52378 /* Utils.swift in Sources */,
