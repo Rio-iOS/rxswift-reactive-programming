@@ -69,10 +69,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="clearButton" destination="mCF-qu-pY7" id="Opk-wq-Mw2"/>
-                        <outlet property="imageView" destination="hTh-8A-xbR" id="LhI-PA-fAr"/>
+                        <outlet property="clearButton" destination="mCF-qu-pY7" id="lBd-tK-eDI"/>
+                        <outlet property="imageView" destination="hTh-8A-xbR" id="5zm-AG-HJq"/>
                         <outlet property="itemAddButton" destination="FCv-dK-cv6" id="pKX-4D-Zuz"/>
-                        <outlet property="saveButton" destination="9Gb-bQ-K9u" id="pDi-ip-l8g"/>
+                        <outlet property="saveButton" destination="9Gb-bQ-K9u" id="KNF-GR-dPL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -33,6 +33,14 @@
 		347C69262C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69252C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift */; };
 		347C69282C9079E300478D06 /* Chapter04PhotoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69272C9079E300478D06 /* Chapter04PhotoWriter.swift */; };
 		347C692A2C96E7AA00478D06 /* Chapter05ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69292C96E7AA00478D06 /* Chapter05ViewController.swift */; };
+		347C692C2C98124C00478D06 /* Chapter06ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C692B2C98124C00478D06 /* Chapter06ViewController.swift */; };
+		347C692F2C981A4D00478D06 /* Chapter06.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347C692E2C981A4D00478D06 /* Chapter06.storyboard */; };
+		347C69312C981ADF00478D06 /* Chapter06PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69302C981ADF00478D06 /* Chapter06PhotosViewController.swift */; };
+		347C69332C981B1900478D06 /* Chapter06CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69322C981B1900478D06 /* Chapter06CollectionViewDataSource.swift */; };
+		347C69352C981B5100478D06 /* Chapter06PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69342C981B5100478D06 /* Chapter06PhotoCell.swift */; };
+		347C69372C981BBC00478D06 /* Chapter06PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69362C981BBC00478D06 /* Chapter06PhotoRepository.swift */; };
+		347C693B2C981C3F00478D06 /* Chapter06PhotoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C693A2C981C3F00478D06 /* Chapter06PhotoWriter.swift */; };
+		347C693D2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C693C2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +86,14 @@
 		347C69252C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter04UIImage+Collage.swift"; sourceTree = "<group>"; };
 		347C69272C9079E300478D06 /* Chapter04PhotoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter04PhotoWriter.swift; sourceTree = "<group>"; };
 		347C69292C96E7AA00478D06 /* Chapter05ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter05ViewController.swift; sourceTree = "<group>"; };
+		347C692B2C98124C00478D06 /* Chapter06ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06ViewController.swift; sourceTree = "<group>"; };
+		347C692E2C981A4D00478D06 /* Chapter06.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter06.storyboard; sourceTree = "<group>"; };
+		347C69302C981ADF00478D06 /* Chapter06PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06PhotosViewController.swift; sourceTree = "<group>"; };
+		347C69322C981B1900478D06 /* Chapter06CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		347C69342C981B5100478D06 /* Chapter06PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06PhotoCell.swift; sourceTree = "<group>"; };
+		347C69362C981BBC00478D06 /* Chapter06PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06PhotoRepository.swift; sourceTree = "<group>"; };
+		347C693A2C981C3F00478D06 /* Chapter06PhotoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06PhotoWriter.swift; sourceTree = "<group>"; };
+		347C693C2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter06PHPhotoLibrary+Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +148,7 @@
 		34735F442C8376CB00C52378 /* RxSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				347C692D2C981A1700478D06 /* Chapter06 */,
 				347C69242C8DEF3800478D06 /* Chapter04 */,
 				34735F802C83789000C52378 /* Utils */,
 				34735F452C8376CB00C52378 /* AppDelegate.swift */,
@@ -187,6 +204,21 @@
 				347C69272C9079E300478D06 /* Chapter04PhotoWriter.swift */,
 			);
 			path = Chapter04;
+			sourceTree = "<group>";
+		};
+		347C692D2C981A1700478D06 /* Chapter06 */ = {
+			isa = PBXGroup;
+			children = (
+				347C692E2C981A4D00478D06 /* Chapter06.storyboard */,
+				347C692B2C98124C00478D06 /* Chapter06ViewController.swift */,
+				347C69302C981ADF00478D06 /* Chapter06PhotosViewController.swift */,
+				347C69322C981B1900478D06 /* Chapter06CollectionViewDataSource.swift */,
+				347C69342C981B5100478D06 /* Chapter06PhotoCell.swift */,
+				347C69362C981BBC00478D06 /* Chapter06PhotoRepository.swift */,
+				347C693A2C981C3F00478D06 /* Chapter06PhotoWriter.swift */,
+				347C693C2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift */,
+			);
+			path = Chapter06;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347C692F2C981A4D00478D06 /* Chapter06.storyboard in Resources */,
 				34735F4F2C8376CD00C52378 /* Assets.xcassets in Resources */,
 				34735F522C8376CD00C52378 /* Base in Resources */,
 				347C69192C8D707300478D06 /* Chapter04.storyboard in Resources */,
@@ -336,8 +369,13 @@
 				34735F4A2C8376CB00C52378 /* TopViewController.swift in Sources */,
 				347C691B2C8D755900478D06 /* Chapter04ViewController.swift in Sources */,
 				347C69212C8DD4AF00478D06 /* Chapter04PhotoCell.swift in Sources */,
+				347C693D2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift in Sources */,
+				347C692C2C98124C00478D06 /* Chapter06ViewController.swift in Sources */,
+				347C693B2C981C3F00478D06 /* Chapter06PhotoWriter.swift in Sources */,
+				347C69352C981B5100478D06 /* Chapter06PhotoCell.swift in Sources */,
 				34735F842C837ACA00C52378 /* Chapter02ViewController.swift in Sources */,
 				34735F462C8376CB00C52378 /* AppDelegate.swift in Sources */,
+				347C69332C981B1900478D06 /* Chapter06CollectionViewDataSource.swift in Sources */,
 				347C69232C8DD9F000478D06 /* Chapter04PhotoRepository.swift in Sources */,
 				34735F822C83789D00C52378 /* Factories.swift in Sources */,
 				347C692A2C96E7AA00478D06 /* Chapter05ViewController.swift in Sources */,
@@ -345,7 +383,9 @@
 				34735F482C8376CB00C52378 /* SceneDelegate.swift in Sources */,
 				34735F862C873EC600C52378 /* Utils.swift in Sources */,
 				347C69282C9079E300478D06 /* Chapter04PhotoWriter.swift in Sources */,
+				347C69372C981BBC00478D06 /* Chapter06PhotoRepository.swift in Sources */,
 				347C691D2C8D79B300478D06 /* Chapter04PhotosViewController.swift in Sources */,
+				347C69312C981ADF00478D06 /* Chapter06PhotosViewController.swift in Sources */,
 				347C69262C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
