@@ -41,6 +41,7 @@
 		347C69372C981BBC00478D06 /* Chapter06PhotoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69362C981BBC00478D06 /* Chapter06PhotoRepository.swift */; };
 		347C693B2C981C3F00478D06 /* Chapter06PhotoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C693A2C981C3F00478D06 /* Chapter06PhotoWriter.swift */; };
 		347C693D2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C693C2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift */; };
+		347C693F2C99A68B00478D06 /* Chapter07ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C693E2C99A68B00478D06 /* Chapter07ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		347C69362C981BBC00478D06 /* Chapter06PhotoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06PhotoRepository.swift; sourceTree = "<group>"; };
 		347C693A2C981C3F00478D06 /* Chapter06PhotoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06PhotoWriter.swift; sourceTree = "<group>"; };
 		347C693C2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter06PHPhotoLibrary+Rx.swift"; sourceTree = "<group>"; };
+		347C693E2C99A68B00478D06 /* Chapter07ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter07ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				34735F832C837ACA00C52378 /* Chapter02ViewController.swift */,
 				347C69162C89E32500478D06 /* Chapter03ViewController.swift */,
 				347C69292C96E7AA00478D06 /* Chapter05ViewController.swift */,
+				347C693E2C99A68B00478D06 /* Chapter07ViewController.swift */,
 				34735F5B2C8376CD00C52378 /* RxSwiftExampleTests */,
 				34735F502C8376CD00C52378 /* LaunchScreen.storyboard */,
 				34735F532C8376CD00C52378 /* Info.plist */,
@@ -373,6 +376,7 @@
 				347C692C2C98124C00478D06 /* Chapter06ViewController.swift in Sources */,
 				347C693B2C981C3F00478D06 /* Chapter06PhotoWriter.swift in Sources */,
 				347C69352C981B5100478D06 /* Chapter06PhotoCell.swift in Sources */,
+				347C693F2C99A68B00478D06 /* Chapter07ViewController.swift in Sources */,
 				34735F842C837ACA00C52378 /* Chapter02ViewController.swift in Sources */,
 				34735F462C8376CB00C52378 /* AppDelegate.swift in Sources */,
 				347C69332C981B1900478D06 /* Chapter06CollectionViewDataSource.swift in Sources */,
