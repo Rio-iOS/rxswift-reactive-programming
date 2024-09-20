@@ -42,6 +42,10 @@
 		347C693B2C981C3F00478D06 /* Chapter06PhotoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C693A2C981C3F00478D06 /* Chapter06PhotoWriter.swift */; };
 		347C693D2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C693C2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift */; };
 		347C693F2C99A68B00478D06 /* Chapter07ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C693E2C99A68B00478D06 /* Chapter07ViewController.swift */; };
+		347C69422C9AFA4C00478D06 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 347C69412C9AFA4C00478D06 /* Kingfisher */; };
+		347C69452C9AFA9100478D06 /* Chapter08ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69442C9AFA9100478D06 /* Chapter08ActivityController.swift */; };
+		347C69472C9AFB0900478D06 /* Chapter08Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69462C9AFB0900478D06 /* Chapter08Repository.swift */; };
+		347C69492C9B0DCE00478D06 /* Chapter08Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347C69482C9B0DCE00478D06 /* Chapter08Activity.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +100,9 @@
 		347C693A2C981C3F00478D06 /* Chapter06PhotoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter06PhotoWriter.swift; sourceTree = "<group>"; };
 		347C693C2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chapter06PHPhotoLibrary+Rx.swift"; sourceTree = "<group>"; };
 		347C693E2C99A68B00478D06 /* Chapter07ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter07ViewController.swift; sourceTree = "<group>"; };
+		347C69442C9AFA9100478D06 /* Chapter08ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter08ActivityController.swift; sourceTree = "<group>"; };
+		347C69462C9AFB0900478D06 /* Chapter08Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter08Repository.swift; sourceTree = "<group>"; };
+		347C69482C9B0DCE00478D06 /* Chapter08Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter08Activity.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347C69422C9AFA4C00478D06 /* Kingfisher in Frameworks */,
 				34735F7D2C8376FF00C52378 /* RxSwift in Frameworks */,
 				34735F7B2C8376FF00C52378 /* RxRelay in Frameworks */,
 				34735F792C8376FF00C52378 /* RxCocoa in Frameworks */,
@@ -150,6 +158,7 @@
 		34735F442C8376CB00C52378 /* RxSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				347C69432C9AFA6800478D06 /* Chapter08 */,
 				347C692D2C981A1700478D06 /* Chapter06 */,
 				347C69242C8DEF3800478D06 /* Chapter04 */,
 				34735F802C83789000C52378 /* Utils */,
@@ -224,6 +233,16 @@
 			path = Chapter06;
 			sourceTree = "<group>";
 		};
+		347C69432C9AFA6800478D06 /* Chapter08 */ = {
+			isa = PBXGroup;
+			children = (
+				347C69442C9AFA9100478D06 /* Chapter08ActivityController.swift */,
+				347C69462C9AFB0900478D06 /* Chapter08Repository.swift */,
+				347C69482C9B0DCE00478D06 /* Chapter08Activity.storyboard */,
+			);
+			path = Chapter08;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -244,6 +263,7 @@
 				34735F782C8376FF00C52378 /* RxCocoa */,
 				34735F7A2C8376FF00C52378 /* RxRelay */,
 				34735F7C2C8376FF00C52378 /* RxSwift */,
+				347C69412C9AFA4C00478D06 /* Kingfisher */,
 			);
 			productName = RxSwiftExample;
 			productReference = 34735F422C8376CB00C52378 /* RxSwiftExample.app */;
@@ -323,6 +343,7 @@
 			mainGroup = 34735F392C8376CB00C52378;
 			packageReferences = (
 				34735F752C8376FF00C52378 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				347C69402C9AFA4C00478D06 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 34735F432C8376CB00C52378 /* Products */;
 			projectDirPath = "";
@@ -344,6 +365,7 @@
 				34735F4F2C8376CD00C52378 /* Assets.xcassets in Resources */,
 				34735F522C8376CD00C52378 /* Base in Resources */,
 				347C69192C8D707300478D06 /* Chapter04.storyboard in Resources */,
+				347C69492C9B0DCE00478D06 /* Chapter08Activity.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +394,7 @@
 				34735F4A2C8376CB00C52378 /* TopViewController.swift in Sources */,
 				347C691B2C8D755900478D06 /* Chapter04ViewController.swift in Sources */,
 				347C69212C8DD4AF00478D06 /* Chapter04PhotoCell.swift in Sources */,
+				347C69452C9AFA9100478D06 /* Chapter08ActivityController.swift in Sources */,
 				347C693D2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift in Sources */,
 				347C692C2C98124C00478D06 /* Chapter06ViewController.swift in Sources */,
 				347C693B2C981C3F00478D06 /* Chapter06PhotoWriter.swift in Sources */,
@@ -388,6 +411,7 @@
 				34735F862C873EC600C52378 /* Utils.swift in Sources */,
 				347C69282C9079E300478D06 /* Chapter04PhotoWriter.swift in Sources */,
 				347C69372C981BBC00478D06 /* Chapter06PhotoRepository.swift in Sources */,
+				347C69472C9AFB0900478D06 /* Chapter08Repository.swift in Sources */,
 				347C691D2C8D79B300478D06 /* Chapter04PhotosViewController.swift in Sources */,
 				347C69312C981ADF00478D06 /* Chapter06PhotosViewController.swift in Sources */,
 				347C69262C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift in Sources */,
@@ -737,6 +761,14 @@
 				minimumVersion = 6.7.1;
 			};
 		};
+		347C69402C9AFA4C00478D06 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -764,6 +796,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 34735F752C8376FF00C52378 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxTest;
+		};
+		347C69412C9AFA4C00478D06 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 347C69402C9AFA4C00478D06 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
