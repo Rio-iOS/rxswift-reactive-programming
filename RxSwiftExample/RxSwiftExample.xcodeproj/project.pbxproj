@@ -46,6 +46,7 @@
 		347C69452C9AFA9100478D06 /* Chapter08ActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69442C9AFA9100478D06 /* Chapter08ActivityController.swift */; };
 		347C69472C9AFB0900478D06 /* Chapter08Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69462C9AFB0900478D06 /* Chapter08Repository.swift */; };
 		347C69492C9B0DCE00478D06 /* Chapter08Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347C69482C9B0DCE00478D06 /* Chapter08Activity.storyboard */; };
+		347C694B2C9D976F00478D06 /* Chapter09ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C694A2C9D976F00478D06 /* Chapter09ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		347C69442C9AFA9100478D06 /* Chapter08ActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter08ActivityController.swift; sourceTree = "<group>"; };
 		347C69462C9AFB0900478D06 /* Chapter08Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter08Repository.swift; sourceTree = "<group>"; };
 		347C69482C9B0DCE00478D06 /* Chapter08Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter08Activity.storyboard; sourceTree = "<group>"; };
+		347C694A2C9D976F00478D06 /* Chapter09ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter09ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 				347C69162C89E32500478D06 /* Chapter03ViewController.swift */,
 				347C69292C96E7AA00478D06 /* Chapter05ViewController.swift */,
 				347C693E2C99A68B00478D06 /* Chapter07ViewController.swift */,
+				347C694A2C9D976F00478D06 /* Chapter09ViewController.swift */,
 				34735F5B2C8376CD00C52378 /* RxSwiftExampleTests */,
 				34735F502C8376CD00C52378 /* LaunchScreen.storyboard */,
 				34735F532C8376CD00C52378 /* Info.plist */,
@@ -407,6 +410,7 @@
 				34735F822C83789D00C52378 /* Factories.swift in Sources */,
 				347C692A2C96E7AA00478D06 /* Chapter05ViewController.swift in Sources */,
 				347C691F2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift in Sources */,
+				347C694B2C9D976F00478D06 /* Chapter09ViewController.swift in Sources */,
 				34735F482C8376CB00C52378 /* SceneDelegate.swift in Sources */,
 				34735F862C873EC600C52378 /* Utils.swift in Sources */,
 				347C69282C9079E300478D06 /* Chapter04PhotoWriter.swift in Sources */,
