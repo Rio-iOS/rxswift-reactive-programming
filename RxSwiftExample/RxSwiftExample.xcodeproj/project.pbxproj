@@ -47,6 +47,17 @@
 		347C69472C9AFB0900478D06 /* Chapter08Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69462C9AFB0900478D06 /* Chapter08Repository.swift */; };
 		347C69492C9B0DCE00478D06 /* Chapter08Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347C69482C9B0DCE00478D06 /* Chapter08Activity.storyboard */; };
 		347C694B2C9D976F00478D06 /* Chapter09ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C694A2C9D976F00478D06 /* Chapter09ViewController.swift */; };
+		347C694E2CA0496400478D06 /* Chapter10CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C694D2CA0496400478D06 /* Chapter10CategoriesViewController.swift */; };
+		347C69502CA0497F00478D06 /* Chapter10EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C694F2CA0497F00478D06 /* Chapter10EventsViewController.swift */; };
+		347C69532CA049CE00478D06 /* Chapter10CategoriesView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347C69522CA049CE00478D06 /* Chapter10CategoriesView.storyboard */; };
+		347C69552CA04B6C00478D06 /* Chapter10EventsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 347C69542CA04B6C00478D06 /* Chapter10EventsView.storyboard */; };
+		347C69572CA057B100478D06 /* Chapter10EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69562CA057B000478D06 /* Chapter10EventCell.swift */; };
+		347C695A2CA0584600478D06 /* Chapter10EOEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69592CA0584600478D06 /* Chapter10EOEvent.swift */; };
+		347C695C2CA05AB400478D06 /* Chapter10EOCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C695B2CA05AB400478D06 /* Chapter10EOCategory.swift */; };
+		347C695E2CA05EE200478D06 /* Chapter10EOLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C695D2CA05EE200478D06 /* Chapter10EOLocation.swift */; };
+		347C69602CA0676400478D06 /* Chapter10EOError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C695F2CA0676400478D06 /* Chapter10EOError.swift */; };
+		347C69622CA0692D00478D06 /* Chapter10EONET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69612CA0692D00478D06 /* Chapter10EONET.swift */; };
+		347C69642CA06D1700478D06 /* Chapter10EOEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C69632CA06D1700478D06 /* Chapter10EOEnvelope.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +116,17 @@
 		347C69462C9AFB0900478D06 /* Chapter08Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter08Repository.swift; sourceTree = "<group>"; };
 		347C69482C9B0DCE00478D06 /* Chapter08Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter08Activity.storyboard; sourceTree = "<group>"; };
 		347C694A2C9D976F00478D06 /* Chapter09ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter09ViewController.swift; sourceTree = "<group>"; };
+		347C694D2CA0496400478D06 /* Chapter10CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10CategoriesViewController.swift; sourceTree = "<group>"; };
+		347C694F2CA0497F00478D06 /* Chapter10EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10EventsViewController.swift; sourceTree = "<group>"; };
+		347C69522CA049CE00478D06 /* Chapter10CategoriesView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter10CategoriesView.storyboard; sourceTree = "<group>"; };
+		347C69542CA04B6C00478D06 /* Chapter10EventsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chapter10EventsView.storyboard; sourceTree = "<group>"; };
+		347C69562CA057B000478D06 /* Chapter10EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10EventCell.swift; sourceTree = "<group>"; };
+		347C69592CA0584600478D06 /* Chapter10EOEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10EOEvent.swift; sourceTree = "<group>"; };
+		347C695B2CA05AB400478D06 /* Chapter10EOCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10EOCategory.swift; sourceTree = "<group>"; };
+		347C695D2CA05EE200478D06 /* Chapter10EOLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10EOLocation.swift; sourceTree = "<group>"; };
+		347C695F2CA0676400478D06 /* Chapter10EOError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10EOError.swift; sourceTree = "<group>"; };
+		347C69612CA0692D00478D06 /* Chapter10EONET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10EONET.swift; sourceTree = "<group>"; };
+		347C69632CA06D1700478D06 /* Chapter10EOEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chapter10EOEnvelope.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +182,7 @@
 		34735F442C8376CB00C52378 /* RxSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				347C694C2CA0493D00478D06 /* Chapter10 */,
 				347C69432C9AFA6800478D06 /* Chapter08 */,
 				347C692D2C981A1700478D06 /* Chapter06 */,
 				347C69242C8DEF3800478D06 /* Chapter04 */,
@@ -244,6 +267,32 @@
 				347C69482C9B0DCE00478D06 /* Chapter08Activity.storyboard */,
 			);
 			path = Chapter08;
+			sourceTree = "<group>";
+		};
+		347C694C2CA0493D00478D06 /* Chapter10 */ = {
+			isa = PBXGroup;
+			children = (
+				347C69582CA0583300478D06 /* Model */,
+				347C694D2CA0496400478D06 /* Chapter10CategoriesViewController.swift */,
+				347C694F2CA0497F00478D06 /* Chapter10EventsViewController.swift */,
+				347C69562CA057B000478D06 /* Chapter10EventCell.swift */,
+				347C69522CA049CE00478D06 /* Chapter10CategoriesView.storyboard */,
+				347C69542CA04B6C00478D06 /* Chapter10EventsView.storyboard */,
+			);
+			path = Chapter10;
+			sourceTree = "<group>";
+		};
+		347C69582CA0583300478D06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				347C69592CA0584600478D06 /* Chapter10EOEvent.swift */,
+				347C695B2CA05AB400478D06 /* Chapter10EOCategory.swift */,
+				347C695D2CA05EE200478D06 /* Chapter10EOLocation.swift */,
+				347C695F2CA0676400478D06 /* Chapter10EOError.swift */,
+				347C69612CA0692D00478D06 /* Chapter10EONET.swift */,
+				347C69632CA06D1700478D06 /* Chapter10EOEnvelope.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +415,8 @@
 			files = (
 				347C692F2C981A4D00478D06 /* Chapter06.storyboard in Resources */,
 				34735F4F2C8376CD00C52378 /* Assets.xcassets in Resources */,
+				347C69552CA04B6C00478D06 /* Chapter10EventsView.storyboard in Resources */,
+				347C69532CA049CE00478D06 /* Chapter10CategoriesView.storyboard in Resources */,
 				34735F522C8376CD00C52378 /* Base in Resources */,
 				347C69192C8D707300478D06 /* Chapter04.storyboard in Resources */,
 				347C69492C9B0DCE00478D06 /* Chapter08Activity.storyboard in Resources */,
@@ -394,31 +445,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				347C69172C89E32500478D06 /* Chapter03ViewController.swift in Sources */,
+				347C695C2CA05AB400478D06 /* Chapter10EOCategory.swift in Sources */,
 				34735F4A2C8376CB00C52378 /* TopViewController.swift in Sources */,
 				347C691B2C8D755900478D06 /* Chapter04ViewController.swift in Sources */,
 				347C69212C8DD4AF00478D06 /* Chapter04PhotoCell.swift in Sources */,
+				347C69572CA057B100478D06 /* Chapter10EventCell.swift in Sources */,
 				347C69452C9AFA9100478D06 /* Chapter08ActivityController.swift in Sources */,
 				347C693D2C98494D00478D06 /* Chapter06PHPhotoLibrary+Rx.swift in Sources */,
 				347C692C2C98124C00478D06 /* Chapter06ViewController.swift in Sources */,
+				347C695E2CA05EE200478D06 /* Chapter10EOLocation.swift in Sources */,
 				347C693B2C981C3F00478D06 /* Chapter06PhotoWriter.swift in Sources */,
 				347C69352C981B5100478D06 /* Chapter06PhotoCell.swift in Sources */,
 				347C693F2C99A68B00478D06 /* Chapter07ViewController.swift in Sources */,
+				347C695A2CA0584600478D06 /* Chapter10EOEvent.swift in Sources */,
 				34735F842C837ACA00C52378 /* Chapter02ViewController.swift in Sources */,
 				34735F462C8376CB00C52378 /* AppDelegate.swift in Sources */,
 				347C69332C981B1900478D06 /* Chapter06CollectionViewDataSource.swift in Sources */,
+				347C69602CA0676400478D06 /* Chapter10EOError.swift in Sources */,
 				347C69232C8DD9F000478D06 /* Chapter04PhotoRepository.swift in Sources */,
 				34735F822C83789D00C52378 /* Factories.swift in Sources */,
 				347C692A2C96E7AA00478D06 /* Chapter05ViewController.swift in Sources */,
 				347C691F2C8DD37100478D06 /* Chapter04CollectionViewDataSource.swift in Sources */,
 				347C694B2C9D976F00478D06 /* Chapter09ViewController.swift in Sources */,
+				347C69502CA0497F00478D06 /* Chapter10EventsViewController.swift in Sources */,
+				347C69642CA06D1700478D06 /* Chapter10EOEnvelope.swift in Sources */,
 				34735F482C8376CB00C52378 /* SceneDelegate.swift in Sources */,
 				34735F862C873EC600C52378 /* Utils.swift in Sources */,
 				347C69282C9079E300478D06 /* Chapter04PhotoWriter.swift in Sources */,
 				347C69372C981BBC00478D06 /* Chapter06PhotoRepository.swift in Sources */,
 				347C69472C9AFB0900478D06 /* Chapter08Repository.swift in Sources */,
 				347C691D2C8D79B300478D06 /* Chapter04PhotosViewController.swift in Sources */,
+				347C69622CA0692D00478D06 /* Chapter10EONET.swift in Sources */,
 				347C69312C981ADF00478D06 /* Chapter06PhotosViewController.swift in Sources */,
 				347C69262C8F1C0E00478D06 /* Chapter04UIImage+Collage.swift in Sources */,
+				347C694E2CA0496400478D06 /* Chapter10CategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
