@@ -2,15 +2,18 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// リポジトリの取得結果。HTTP 304 の場合は `repository` が `nil` になります。
 struct RepositoryActivityResponse {
     let repository: Chapter08Repository?
     let lastModified: String?
 }
 
+/// 更新日時を使った条件付き取得を、通信実装から切り離す境界。
 protocol RepositoryActivityFetching {
     func fetch(repositoryPath: String, lastModified: String?) -> Observable<RepositoryActivityResponse>
 }
 
+/// GitHub REST API からリポジトリを取得し、通信・HTTP・デコードの失敗をエラーとして通知します。
 final class GitHubRepositoryActivityService: RepositoryActivityFetching {
     private let session: URLSession
 
@@ -35,11 +38,16 @@ final class GitHubRepositoryActivityService: RepositoryActivityFetching {
     }
 }
 
+/// 1 つのリポジトリの表示データと条件付き取得用の更新日時を保持する境界。
 protocol RepositoryActivityCaching: AnyObject {
     var repositories: [Chapter08Repository] { get set }
     var lastModified: String? { get set }
 }
 
+/// JSON と更新日時を指定ディレクトリへ同期的に保存するキャッシュ。
+///
+/// ディレクトリは呼び出し側で用意します。読み込み失敗は空配列または `nil`、書き込み失敗は無視します。
+/// 同時アクセスの排他制御や、2 ファイルをまとめた原子的な更新は行いません。
 final class FileRepositoryActivityCache: RepositoryActivityCaching {
     private let directory: URL
 
@@ -69,6 +77,7 @@ final class FileRepositoryActivityCache: RepositoryActivityCaching {
     }
 }
 
+/// 条件付きで取得した結果をキャッシュへ反映し、保存されている一覧を返します。
 final class RefreshRepositoryActivityUseCase {
     private let service: RepositoryActivityFetching
     private let cache: RepositoryActivityCaching
@@ -80,8 +89,12 @@ final class RefreshRepositoryActivityUseCase {
 
     var cachedRepositories: [Chapter08Repository] { cache.repositories }
 
+    /// 更新があれば保存し、HTTP 304 なら既存キャッシュを返します。取得時のエラーはそのまま通知します。
+    ///
+    /// - Parameter repositoryPath: `owner/name` 形式のパス。同じキャッシュを別のパスと共有しないでください。
+    /// - Returns: 更新後にキャッシュから読み直した一覧。通知スケジューラは変更しません。
     func execute(repositoryPath: String) -> Observable<[Chapter08Repository]> {
-        // Capture dependencies, not the owner of the subscription.
+        // クロージャには必要なキャッシュだけを渡し、UseCase 自体の保持を避けます。
         let cache = cache
         return service.fetch(repositoryPath: repositoryPath, lastModified: cache.lastModified)
             .map { response in
@@ -94,6 +107,7 @@ final class RefreshRepositoryActivityUseCase {
     }
 }
 
+/// キャッシュの初期表示と、メインスレッドへ通知する更新処理を提供します。
 final class RepositoryActivityViewModel {
     private let refreshActivity: RefreshRepositoryActivityUseCase
     private let repositoryPath: String

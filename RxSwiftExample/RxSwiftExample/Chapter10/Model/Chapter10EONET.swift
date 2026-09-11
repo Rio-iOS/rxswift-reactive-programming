@@ -1,19 +1,14 @@
-//
-//  Chapter10EONET.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/23.
-//
-
 import Foundation
 import RxSwift
 import RxRelay
 
+/// EONET API v2.1 の取得・デコードを扱う教材用アダプタ。
 class Chapter10EONET {
     static let API = "https://eonet.sci.gsfc.nasa.gov/api/v2.1"
     static let categoriesEndpoint = "/categories"
     static let eventsEndpoint = "/events"
     
+    /// 名前順のカテゴリ一覧。取得エラーは空配列に変換し、直近の結果を購読間で保持します。
     static var categories: Observable<[Chapter10EOCategory]> = {
         let request: Observable<[Chapter10EOCategory]> = Chapter10EONET.request(endpoint: categoriesEndpoint, contentIdentifier: "categories")
         
@@ -25,10 +20,12 @@ class Chapter10EONET {
             .share(replay: 1, scope: .forever)
     }()
     
+    /// open・closed の結果を結合します。現実装は共通の `/events` を取得し、カテゴリでの絞り込みは呼び出し側が行います。
     static func events(forLast days: Int = 360, category: Chapter10EOCategory) -> Observable<[Chapter10EOEvent]> {
         let openEvents = events(forLast: days, closed: false, endpoint: category.endpoint)
         let closedEvents = events(forLast: days, closed: true, endpoint: category.endpoint)
         
+        // 比較例（未実行）: concat なら open の完了後に closed を購読します。
         // return openEvents.concat(closedEvents)
         return Observable.of(openEvents, closedEvents)
             .merge()
@@ -66,6 +63,8 @@ class Chapter10EONET {
         .sorted(by: Chapter10EOEvent.compareDates)
     }
     
+    /// 指定したキーの JSON をデコードします。URL・パラメータの構築失敗は値を通知せず完了します。
+    /// 通信とデコードのエラーは Observable に流します。HTTP ステータスの独自検証は行いません。
     static func request<T: Decodable>(endpoint: String, query: [String: Any] = [:], contentIdentifier: String) -> Observable<T> {
         
         do {

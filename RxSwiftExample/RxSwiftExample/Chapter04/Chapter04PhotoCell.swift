@@ -1,10 +1,3 @@
-//
-//  Chapter04PhotoCell.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/08.
-//
-
 import UIKit
 
 final class Chapter04PhotoCell: UICollectionViewCell {

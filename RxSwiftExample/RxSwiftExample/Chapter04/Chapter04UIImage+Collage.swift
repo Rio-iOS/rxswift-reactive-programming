@@ -1,14 +1,10 @@
-//
-//  Chapter04UIImage+Collage.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/09.
-//
-
 import Foundation
 import UIKit
 
 extension Array where Element == UIImage {
+    /// 画像を1行または2行のタイルに並べ、白い背景のコラージュを作ります。
+    ///
+    /// - Precondition: 配列が空でなく、画像と指定サイズの幅・高さが正の値であること。
     func collage(size: CGSize) -> UIImage {
         // 行数の決定
         // 配列の要素数が3未満の場合、行数は1、それ以外は行数は2として画像を配置
@@ -67,7 +63,10 @@ extension Array where Element == UIImage {
 }
 
 extension UIImage {
-    /// 画像のサイズを新しいサイズにスケーリングする
+    /// 縦横比を保ち、指定領域を覆う倍率で画像を描画し直します。
+    ///
+    /// 現実装のキャンバスは拡縮後の画像サイズなので、戻り値のサイズは `newSize` と一致するとは限りません。
+    /// 同じサイズなら元画像を返し、描画結果を取得できない場合は空の画像を返します。
     func scaled(_ newSize: CGSize) -> UIImage {
         // 元の画像のサイズと指定された画像サイズを比較する
         // サイズが同じ場合はスケーリング不要なため、リターンする
@@ -85,7 +84,7 @@ extension UIImage {
         // スケーリング後の画像の幅と高さを計算し、
         // 新しいサイズに対して中央に配置するように、
         // 描画領域の座標を計算する
-        // 余白ができる場合は、中心に配置されるように調整する。
+        // 指定領域からはみ出す分だけ、描画位置を負の方向へずらします。
         let scaledRect = CGRect(
             x: (newSize.width - width) / 2.0,
             y: (newSize.height - height) / 2.0,

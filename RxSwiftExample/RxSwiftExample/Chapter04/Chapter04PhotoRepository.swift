@@ -1,10 +1,3 @@
-//
-//  Chapter04PhotoRepository.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/08.
-//
-
 import Photos
 
 final class Chapter04PhotoRepository {

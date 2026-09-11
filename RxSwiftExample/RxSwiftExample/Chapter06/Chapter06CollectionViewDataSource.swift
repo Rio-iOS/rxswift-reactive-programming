@@ -1,10 +1,3 @@
-//
-//  Chapter06CollectionViewDataSource.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/16.
-//
-
 import UIKit
 
 final class Chapter06CollectionViewDataSource: NSObject, UICollectionViewDataSource {

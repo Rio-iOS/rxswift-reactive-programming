@@ -1,10 +1,3 @@
-//
-//  Chapter09ViewController.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/20.
-//
-
 import UIKit
 import RxSwift
 import RxRelay

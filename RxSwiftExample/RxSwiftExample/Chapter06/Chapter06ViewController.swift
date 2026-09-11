@@ -1,10 +1,3 @@
-//
-//  Chapter06ViewController.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/16.
-//
-
 import Foundation
 import UIKit
 import RxSwift

@@ -1,10 +1,3 @@
-//
-//  Chapter10EventCell.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/22.
-//
-
 import UIKit
 
 final class Chapter10EventCell: UITableViewCell {

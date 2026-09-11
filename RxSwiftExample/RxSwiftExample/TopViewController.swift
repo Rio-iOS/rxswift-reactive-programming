@@ -1,10 +1,3 @@
-//
-//  TopViewController.swift
-//  RxSwiftExample
-//
-//  Created by 藤門莉生 on 2024/09/01.
-//
-
 import UIKit
 
 final class TopViewController: UIViewController {
