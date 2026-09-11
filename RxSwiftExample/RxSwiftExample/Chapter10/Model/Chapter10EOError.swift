@@ -4,5 +4,6 @@ enum Chapter10EOError: Error {
     case invalidURL(String)
     case invalidParameter(String, Any)
     case invalidJSON(String)
-    case invalidDecopderConfiguration
+    case invalidDecoderConfiguration
+    case httpStatus(Int)
 }

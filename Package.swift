@@ -6,5 +6,8 @@ let package = Package(name: "RepositoryActivityCore", platforms: [.macOS(.v12)],
     .target(name: "RepositoryActivityCore", dependencies: [
         .product(name: "RxSwift", package: "RxSwift"), .product(name: "RxCocoa", package: "RxSwift"),
     ], path: "RxSwiftExample/RxSwiftExample/Chapter08", exclude: ["Chapter08ActivityController.swift", "Chapter08Activity.storyboard"], sources: ["Chapter08Repository.swift", "RepositoryActivityViewModel.swift"]),
-    .testTarget(name: "RepositoryActivityTests", dependencies: ["RepositoryActivityCore"]),
+    .target(name: "EventCategoriesCore", dependencies: [
+        .product(name: "RxSwift", package: "RxSwift"), .product(name: "RxCocoa", package: "RxSwift"),
+    ], path: "RxSwiftExample/RxSwiftExample/Chapter10", exclude: ["Chapter10CategoriesViewController.swift", "Chapter10EventsViewController.swift", "Chapter10EventCell.swift", "Chapter10CategoriesView.storyboard", "Chapter10EventsView.storyboard"], sources: ["Model", "EventCategoriesViewModel.swift"]),
+    .testTarget(name: "RepositoryActivityTests", dependencies: ["RepositoryActivityCore", "EventCategoriesCore"]),
 ])

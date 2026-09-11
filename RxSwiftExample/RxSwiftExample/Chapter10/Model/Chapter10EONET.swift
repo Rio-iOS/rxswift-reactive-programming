@@ -1,29 +1,28 @@
 import Foundation
 import RxSwift
 import RxRelay
+import RxCocoa
 
 /// EONET API v2.1 の取得・デコードを扱う教材用アダプタ。
-class Chapter10EONET {
-    static let API = "https://eonet.sci.gsfc.nasa.gov/api/v2.1"
+enum Chapter10EONET {
+    private static let baseURLString = "https://eonet.gsfc.nasa.gov/api/v2.1"
     static let categoriesEndpoint = "/categories"
-    static let eventsEndpoint = "/events"
     
-    /// 名前順のカテゴリ一覧。取得エラーは空配列に変換し、直近の結果を購読間で保持します。
-    static var categories: Observable<[Chapter10EOCategory]> = {
+    /// 名前順のカテゴリ一覧。購読ごとに取得し、通信・デコードの失敗を通知します。
+    static var categories: Observable<[Chapter10EOCategory]> {
         let request: Observable<[Chapter10EOCategory]> = Chapter10EONET.request(endpoint: categoriesEndpoint, contentIdentifier: "categories")
         
         return request
             .map { categories in
                 categories.sorted { $0.name < $1.name }
             }
-            .catchAndReturn([])
-            .share(replay: 1, scope: .forever)
-    }()
+
+    }
     
-    /// open・closed の結果を結合します。現実装は共通の `/events` を取得し、カテゴリでの絞り込みは呼び出し側が行います。
-    static func events(forLast days: Int = 360, category: Chapter10EOCategory) -> Observable<[Chapter10EOEvent]> {
-        let openEvents = events(forLast: days, closed: false, endpoint: category.endpoint)
-        let closedEvents = events(forLast: days, closed: true, endpoint: category.endpoint)
+    /// 指定カテゴリのopen・closedの結果を結合します。どちらかの失敗も呼び出し元へ返します。
+    static func events(forLast days: Int = 360, category: Chapter10EOCategory, session: URLSession = .shared) -> Observable<[Chapter10EOEvent]> {
+        let openEvents = events(forLast: days, closed: false, endpoint: category.endpoint, session: session)
+        let closedEvents = events(forLast: days, closed: true, endpoint: category.endpoint, session: session)
         
         // 比較例（未実行）: concat なら open の完了後に closed を購読します。
         // return openEvents.concat(closedEvents)
@@ -34,42 +33,33 @@ class Chapter10EONET {
             }
     }
     
-    private static func events(forLast days: Int, closed: Bool, endpoint: String) -> Observable<[Chapter10EOEvent]> {
+    private static func events(forLast days: Int, closed: Bool, endpoint: String, session: URLSession) -> Observable<[Chapter10EOEvent]> {
         let query: [String: Any] = [
             "days": days,
             "status": (closed ? "closed" : "open")
         ]
         let request: Observable<[Chapter10EOEvent]> = Chapter10EONET.request(
-            endpoint: eventsEndpoint,
+            endpoint: endpoint,
             query: query,
-            contentIdentifier: "events"
+            contentIdentifier: "events", session: session
         )
-        return request.catchAndReturn([])
+        return request
     }
     
-    static func jsonDecoder(contentIdentifier: String) -> JSONDecoder {
+    private static func jsonDecoder(contentIdentifier: String) -> JSONDecoder {
         let decoder = JSONDecoder()
         decoder.userInfo[.contentIdentifier] = contentIdentifier
         decoder.dateDecodingStrategy = .iso8601
         return decoder
     }
     
-    static func filteredEvents(events: [Chapter10EOEvent], forCategory category: Chapter10EOCategory) -> [Chapter10EOEvent] {
-        return events.filter { event in
-            return event
-                .categories
-                .contains(where: { $0.id == category.id }) && !category.events.contains(where: { $0.id == event.id })
-        }
-        .sorted(by: Chapter10EOEvent.compareDates)
-    }
-    
-    /// 指定したキーの JSON をデコードします。URL・パラメータの構築失敗は値を通知せず完了します。
-    /// 通信とデコードのエラーは Observable に流します。HTTP ステータスの独自検証は行いません。
-    static func request<T: Decodable>(endpoint: String, query: [String: Any] = [:], contentIdentifier: String) -> Observable<T> {
+    /// 指定したキーのJSONをデコードします。構築・通信・HTTP・デコードの失敗はエラーとして通知します。
+    /// sessionはテストで差し替えられます。購読破棄はURLSessionのリクエストをキャンセルします。
+    static func request<T: Decodable>(endpoint: String, query: [String: Any] = [:], contentIdentifier: String, session: URLSession = .shared) -> Observable<T> {
         
         do {
             guard
-                let url = URL(string: API)?.appending(path: endpoint),
+                let url = URL(string: baseURLString)?.appendingPathComponent(endpoint),
                 var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
             else {
                 throw Chapter10EOError.invalidURL(endpoint)
@@ -88,17 +78,17 @@ class Chapter10EONET {
             
             let request = URLRequest(url: finalURL)
             
-            return URLSession
-                .shared
+            return session
                 .rx
                 .response(request: request)
                 .map { (result: (response: HTTPURLResponse, data: Data)) -> T in
+                    guard (200..<300).contains(result.response.statusCode) else { throw Chapter10EOError.httpStatus(result.response.statusCode) }
                     let decoder = self.jsonDecoder(contentIdentifier: contentIdentifier)
                     let envelope = try decoder.decode(Chapter10EOEnvelope<T>.self, from: result.data)
                     return envelope.content
                 }
         } catch {
-            return Observable<T>.empty()
+            return Observable<T>.error(error)
         }
     }
 }

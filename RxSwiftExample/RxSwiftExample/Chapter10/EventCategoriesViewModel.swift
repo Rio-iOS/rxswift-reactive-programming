@@ -8,7 +8,7 @@ protocol EventCategoriesRepository {
 
 /// EONET のカテゴリと直近 360 日間のイベントを取得します。
 ///
-/// 元の取得処理は通信・デコードのエラーを空配列へ変換するため、取得失敗とデータなしを区別しません。
+/// 空の結果と、通信・デコードの失敗を区別して通知します。
 struct EONETCategoriesRepository: EventCategoriesRepository {
     func fetchCategories() -> Observable<[Chapter10EOCategory]> { Chapter10EONET.categories }
     func fetchEvents(in category: Chapter10EOCategory) -> Observable<[Chapter10EOEvent]> {
@@ -32,9 +32,12 @@ struct FetchEventCategoriesUseCase {
                 .scan(categories) { updated, events in
                     updated.map { category in
                         var category = category
-                        category.events += events.filter { event in
+                        let candidates = events.filter { event in
                             event.categories.contains { $0.id == category.id } && !category.events.contains { $0.id == event.id }
-                        }.sorted(by: Chapter10EOEvent.compareDates)
+                        }
+                        var seen = Set(category.events.map(\.id))
+                        category.events += candidates.filter { seen.insert($0.id).inserted }
+                        category.events.sort(by: Chapter10EOEvent.compareDates)
                         return category
                     }
                 }

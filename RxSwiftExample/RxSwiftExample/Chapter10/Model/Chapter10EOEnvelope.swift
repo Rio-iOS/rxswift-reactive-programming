@@ -25,7 +25,7 @@ struct Chapter10EOEnvelope<Content: Decodable>: Decodable {
               let contentIdentifier = ci as? String,
               let key = CodingKeys(stringValue: contentIdentifier)
         else {
-            throw Chapter10EOError.invalidDecopderConfiguration
+            throw Chapter10EOError.invalidDecoderConfiguration
         }
         
         let container = try decoder.container(keyedBy: CodingKeys.self)

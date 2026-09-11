@@ -31,11 +31,11 @@ struct Chapter10EOEvent: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
-        description = try container.decode(String.self, forKey: .description)
-        link = try container.decode(URL?.self, forKey: .link)
-        closeDate = try container.decode(Date.self, forKey: .closeDate)
+        description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
+        link = try container.decodeIfPresent(URL.self, forKey: .link)
+        closeDate = try container.decodeIfPresent(Date.self, forKey: .closeDate)
         categories = try container.decode([Chapter10EOEventCategory].self, forKey: .categories)
-        locations = try? container.decode([Chapter10EOLocation].self, forKey: .locations)
+        locations = try container.decodeIfPresent([Chapter10EOLocation].self, forKey: .locations)
     }
     
     static func compareDates(lhs: Chapter10EOEvent, rhs: Chapter10EOEvent) -> Bool {
@@ -49,8 +49,8 @@ struct Chapter10EOEvent: Decodable {
         case (_, nil):
             return false
             
-        case (let ldate, let rdate):
-            return ldate! < rdate!
+        case let (left?, right?):
+            return left < right
         }
     }
 }

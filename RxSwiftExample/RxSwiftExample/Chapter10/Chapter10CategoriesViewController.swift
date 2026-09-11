@@ -8,12 +8,14 @@ final class Chapter10CategoriesViewController: UIViewController {
 
     private let categories = BehaviorRelay<[Chapter10EOCategory]>(value: [])
     private let viewModel = EventCategoriesViewModel(fetchCategories: FetchEventCategoriesUseCase(repository: EONETCategoriesRepository()))
-    private let disposeBag = DisposeBag()
+    private let download = SerialDisposable()
+
+    deinit { download.dispose() }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // challenge1
+
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.color = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
@@ -28,7 +30,8 @@ final class Chapter10CategoriesViewController: UIViewController {
 
 private extension Chapter10CategoriesViewController {
     func startDownload() {
-        viewModel.load()
+        activityIndicator.startAnimating()
+        download.disposable = viewModel.load()
             .subscribe(onNext: { [weak self] categories in
                 self?.categories.accept(categories)
                 self?.tableView.reloadData()
@@ -36,12 +39,12 @@ private extension Chapter10CategoriesViewController {
                 guard let self = self else { return }
                 self.activityIndicator.stopAnimating()
                 let alert = UIAlertController(title: "Could not load categories", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                alert.addAction(UIAlertAction(title: "Retry", style: .default) { [weak self] _ in self?.startDownload() })
+                alert.addAction(UIAlertAction(title: "Close", style: .cancel))
                 self.present(alert, animated: true)
             }, onCompleted: { [weak self] in
                 self?.activityIndicator.stopAnimating()
             })
-            .disposed(by: disposeBag)
     }
 }
 
@@ -55,7 +58,6 @@ extension Chapter10CategoriesViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         let category = categories.value[indexPath.row]
         var contentConfiguration = cell.defaultContentConfiguration()
-        // contentConfiguration.text = category.name
         contentConfiguration.text = "\(category.name) (\(category.events.count))"
         contentConfiguration.secondaryText = category.description
         cell.accessoryType = (category.events.count > 0) ? .disclosureIndicator : .none

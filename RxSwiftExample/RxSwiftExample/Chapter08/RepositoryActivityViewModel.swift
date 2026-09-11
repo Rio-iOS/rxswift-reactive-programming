@@ -38,46 +38,43 @@ final class GitHubRepositoryActivityService: RepositoryActivityFetching {
     }
 }
 
-/// 1 つのリポジトリの表示データと条件付き取得用の更新日時を保持する境界。
-protocol RepositoryActivityCaching: AnyObject {
-    var repositories: [Chapter08Repository] { get set }
-    var lastModified: String? { get set }
+/// 本文と更新日時を同じリポジトリに結び付ける保存単位。
+struct RepositoryActivitySnapshot: Codable {
+    let repositoryPath: String
+    let repositories: [Chapter08Repository]
+    let lastModified: String?
 }
 
-/// JSON と更新日時を指定ディレクトリへ同期的に保存するキャッシュ。
-///
-/// ディレクトリは呼び出し側で用意します。読み込み失敗は空配列または `nil`、書き込み失敗は無視します。
-/// 同時アクセスの排他制御や、2 ファイルをまとめた原子的な更新は行いません。
+protocol RepositoryActivityCaching: AnyObject {
+    func load(for repositoryPath: String) throws -> RepositoryActivitySnapshot?
+    func save(_ snapshot: RepositoryActivitySnapshot) throws
+}
+
+/// 本文と更新日時を1つのJSONへ原子的に保存します。保存失敗は呼び出し元へ返します。
 final class FileRepositoryActivityCache: RepositoryActivityCaching {
     private let directory: URL
+    private let lock = NSLock()
+    private var fileURL: URL { directory.appendingPathComponent("repository-activity-v2.json") }
 
     init(directory: URL) { self.directory = directory }
 
-    var repositories: [Chapter08Repository] {
-        get {
-            guard let data = try? Data(contentsOf: directory.appendingPathComponent("repositories.json")) else { return [] }
-            return (try? JSONDecoder().decode([Chapter08Repository].self, from: data)) ?? []
-        }
-        set {
-            guard let data = try? JSONEncoder().encode(newValue) else { return }
-            try? data.write(to: directory.appendingPathComponent("repositories.json"), options: .atomic)
-        }
+    func load(for repositoryPath: String) throws -> RepositoryActivitySnapshot? {
+        lock.lock()
+        defer { lock.unlock() }
+        guard FileManager.default.fileExists(atPath: fileURL.path) else { return nil }
+        let snapshot = try JSONDecoder().decode(RepositoryActivitySnapshot.self, from: Data(contentsOf: fileURL))
+        return snapshot.repositoryPath == repositoryPath ? snapshot : nil
     }
 
-    var lastModified: String? {
-        get { try? String(contentsOf: directory.appendingPathComponent("modified.txt"), encoding: .utf8) }
-        set {
-            let url = directory.appendingPathComponent("modified.txt")
-            if let newValue = newValue {
-                try? newValue.write(to: url, atomically: true, encoding: .utf8)
-            } else {
-                try? FileManager.default.removeItem(at: url)
-            }
-        }
+    func save(_ snapshot: RepositoryActivitySnapshot) throws {
+        lock.lock()
+        defer { lock.unlock() }
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        try JSONEncoder().encode(snapshot).write(to: fileURL, options: .atomic)
     }
 }
 
-/// 条件付きで取得した結果をキャッシュへ反映し、保存されている一覧を返します。
+/// 破損したキャッシュは使わず再取得し、通信または保存の失敗は呼び出し元へ通知します。
 final class RefreshRepositoryActivityUseCase {
     private let service: RepositoryActivityFetching
     private let cache: RepositoryActivityCaching
@@ -87,23 +84,26 @@ final class RefreshRepositoryActivityUseCase {
         self.cache = cache
     }
 
-    var cachedRepositories: [Chapter08Repository] { cache.repositories }
+    func cachedRepositories(for repositoryPath: String) -> [Chapter08Repository] {
+        (try? cache.load(for: repositoryPath))?.repositories ?? []
+    }
 
-    /// 更新があれば保存し、HTTP 304 なら既存キャッシュを返します。取得時のエラーはそのまま通知します。
-    ///
-    /// - Parameter repositoryPath: `owner/name` 形式のパス。同じキャッシュを別のパスと共有しないでください。
-    /// - Returns: 更新後にキャッシュから読み直した一覧。通知スケジューラは変更しません。
     func execute(repositoryPath: String) -> Observable<[Chapter08Repository]> {
-        // クロージャには必要なキャッシュだけを渡し、UseCase 自体の保持を避けます。
         let cache = cache
-        return service.fetch(repositoryPath: repositoryPath, lastModified: cache.lastModified)
-            .map { response in
-                if let repository = response.repository {
-                    cache.repositories = [repository]
-                    cache.lastModified = response.lastModified
+        let service = service
+        return Observable.deferred {
+            let snapshot = try? cache.load(for: repositoryPath)
+            return service.fetch(repositoryPath: repositoryPath, lastModified: snapshot?.lastModified)
+                .map { response in
+                    guard let repository = response.repository else {
+                        guard let snapshot = snapshot else { throw URLError(.badServerResponse) }
+                        return snapshot.repositories
+                    }
+                    let updated = RepositoryActivitySnapshot(repositoryPath: repositoryPath, repositories: [repository], lastModified: response.lastModified)
+                    try cache.save(updated)
+                    return updated.repositories
                 }
-                return cache.repositories
-            }
+        }
     }
 }
 
@@ -117,7 +117,7 @@ final class RepositoryActivityViewModel {
         self.refreshActivity = refreshActivity
     }
 
-    var cachedRepositories: [Chapter08Repository] { refreshActivity.cachedRepositories }
+    var cachedRepositories: [Chapter08Repository] { refreshActivity.cachedRepositories(for: repositoryPath) }
 
     func refresh() -> Observable<[Chapter08Repository]> {
         refreshActivity.execute(repositoryPath: repositoryPath).observe(on: MainScheduler.instance)
