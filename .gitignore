@@ -60,3 +60,13 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# Local build and developer settings
+.DS_Store
+**/.build/
+**/xcuserdata/
+*.xcuserstate
+DerivedData/
+.env
+.env.*
+!.env.example

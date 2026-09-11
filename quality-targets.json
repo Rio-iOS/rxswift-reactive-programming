@@ -1,0 +1,9 @@
+[
+  {
+    "kind": "app",
+    "name": "RxSwiftExample",
+    "scheme": "RxSwiftExample",
+    "project": "RxSwiftExample/RxSwiftExample.xcodeproj",
+    "workspace": null
+  }
+]
