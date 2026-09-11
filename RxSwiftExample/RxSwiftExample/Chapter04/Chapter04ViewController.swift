@@ -13,26 +13,26 @@ import RxRelay
 final class Chapter04ViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let images = BehaviorRelay<[UIImage]>(value: [])
-    
+
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var saveButton: UIButton!
     @IBOutlet private weak var clearButton: UIButton!
     @IBOutlet private weak var itemAddButton: UIBarButtonItem!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
     }
-    
+
     @IBAction func actionClear(_ sender: Any) {
         images.accept([])
     }
-    
+
     @IBAction func actionSave(_ sender: Any) {
         guard let image = imageView.image else {
             return
         }
-        
+
 //        Chapter04PhotoWriter
 //            .save(image)
 //            .asSingle()
@@ -47,7 +47,7 @@ final class Chapter04ViewController: UIViewController {
 //                }
 //            )
 //            .disposed(by: disposeBag)
-        
+
         Chapter04PhotoWriter
             .save(image)
             .subscribe(
@@ -61,15 +61,15 @@ final class Chapter04ViewController: UIViewController {
                 }
             )
             .disposed(by: disposeBag)
-        
+
     }
-    
+
     @IBAction func actionAdd(_ sender: Any) {
 //        let newImages = images.value + [UIImage(named: "IMG_1907.jpg")!]
 //        images.accept(newImages)
-        
+
         let photosViewController = Chapter04PhotosViewController()
-        
+
         photosViewController
             .selectedImages
             .subscribe(
@@ -82,7 +82,7 @@ final class Chapter04ViewController: UIViewController {
                 }
             )
             .disposed(by: disposeBag)
-        
+
         navigationController?.pushViewController(photosViewController, animated: true)
     }
 }
@@ -94,7 +94,7 @@ private extension Chapter04ViewController {
 //            message: description,
 //            preferredStyle: .alert
 //        )
-//        
+//
 //        alert.addAction(
 //            .init(
 //                title: "Close",
@@ -104,24 +104,25 @@ private extension Chapter04ViewController {
 //                }
 //            )
 //        )
-//        
+//
 //        present(alert, animated: true)
-        
+
         // challenge2
         alert(title, description: description)
             .subscribe()
             .disposed(by: disposeBag)
     }
-   
+
     // challenge2
     func alert(_ title: String, description: String? = nil) -> Completable {
-        return Completable.create { observer in
+        return Completable.create { [weak self] observer in
+            guard let self = self else { observer(.completed); return Disposables.create() }
             let alert = UIAlertController(
                 title: title,
                 message: description,
                 preferredStyle: .alert
             )
-            
+
             alert.addAction(
                 .init(
                     title: "Close",
@@ -131,12 +132,12 @@ private extension Chapter04ViewController {
                     }
                 )
             )
-            
+
             self.present(alert, animated: true)
-           
+
             // disposeされた際にアラートが閉じることが保障される
-            return Disposables.create {
-                self.dismiss(animated: true, completion: nil)
+            return Disposables.create { [weak alert] in
+                alert?.dismiss(animated: true)
             }
         }
     }
@@ -149,14 +150,14 @@ private extension Chapter04ViewController {
             })
             .disposed(by: disposeBag)
     }
-    
+
     func updateUI(images: [UIImage]) {
         saveButton.isEnabled = (images.count > 0) && (images.count % 2 == 0)
         clearButton.isEnabled = images.count > 0
         itemAddButton.isEnabled = images.count < 6
         title = images.count > 0 ? "\(images.count) photos" : "Collage"
     }
-    
+
     func actionClear() {
         images.accept([])
     }

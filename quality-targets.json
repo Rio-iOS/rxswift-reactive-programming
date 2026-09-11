@@ -5,5 +5,10 @@
     "scheme": "RxSwiftExample",
     "project": "RxSwiftExample/RxSwiftExample.xcodeproj",
     "workspace": null
+  },
+  {
+    "kind": "package",
+    "name": "RepositoryActivityCore",
+    "path": "."
   }
 ]

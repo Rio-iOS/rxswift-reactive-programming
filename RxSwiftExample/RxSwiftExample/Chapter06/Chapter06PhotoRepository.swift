@@ -10,10 +10,10 @@ import Photos
 final class Chapter06PhotoRepository {
     lazy var photos = Self.loadPhotos()
     lazy var imageManager = PHCachingImageManager()
-    let thumnailSize: CGSize
-    
-    init(thumnailSize: CGSize) {
-        self.thumnailSize = thumnailSize
+    let thumbnailSize: CGSize
+
+    init(thumbnailSize: CGSize) {
+        self.thumbnailSize = thumbnailSize
     }
 }
 
